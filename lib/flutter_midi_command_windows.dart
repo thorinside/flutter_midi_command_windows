@@ -419,7 +419,7 @@ void _onMidiData(
         partialSysExBuffer.addAll(messageData);
 
         if (partialSysExBuffer.isNotEmpty && partialSysExBuffer.last == 0xF7) {
-          dev?.handleSysexData(messageData, midiHdrPointer);
+          dev?.handleSysexData(Uint8List.fromList(partialSysExBuffer), midiHdrPointer);
           partialSysExBuffer.clear();
         }
 
